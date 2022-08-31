@@ -21,6 +21,12 @@ RUN echo "user_id=${user_id}" \
  && echo "group_od=${group_id}" \
  && echo "group_name=${group_name}"
 
+# Install sudo.
+RUN apt-get update \
+ && apt-get install --no-install-recommends -y sudo \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
 # Create new group if it doesn't already exist.
 RUN ["/bin/bash", "-c", "if [[ -z \"$(getent group ${group_id})\" ]]; then groupadd -g ${group_id} ${group_name}; fi"]
 
