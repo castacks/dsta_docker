@@ -58,8 +58,10 @@ docker run --rm \
     --privileged \
     --group-add audio \
     --group-add video \
-    ${DOCKER_RUN_NVIDIA} \
     $1 \
     /bin/bash
+
+    # nvidia runtime is not supported on this NX!
+    # ${DOCKER_RUN_NVIDIA} \
 
 echo "Out of the container. "
