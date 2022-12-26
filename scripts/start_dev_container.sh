@@ -58,6 +58,7 @@ docker run --rm \
     --privileged \
     --group-add audio \
     --group-add video \
+    --name mvs \
     ${DOCKER_RUN_NVIDIA} \
     $1 \
     /bin/bash
