@@ -40,7 +40,7 @@ echo "Running docker... "
 DOCKER_RUN_NVIDIA=$(get_docker_nvidia_option)
 echo "DOCKER_RUN_NVIDIA=${DOCKER_RUN_NVIDIA}"
 
-docker run --rm \
+docker run \
     -it \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     --volume="$XAUTH:$XAUTH" \

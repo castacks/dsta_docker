@@ -4,6 +4,9 @@ import re
 import subprocess
 import sys
 
+# CUDA and PyTorch versions are determined by the NGC images. Check out the following link for more details.
+# https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/overview.html#overview
+
 class VersionCode(object):
     def __init__(self, *args) -> None:
         super().__init__()
