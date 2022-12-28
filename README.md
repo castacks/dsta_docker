@@ -8,6 +8,7 @@
 - [Scripts for creating docker containers](#scripts-for-creating-docker-containers)
 - [Adding the host user to an image](#adding-the-host-user-to-an-image)
 - [Building images locally](#building-images-locally)
+  - [Notes for supporting PyG and CuPy on x86](#notes-for-supporting-pyg-and-cupy-on-x86)
 - [Remove a series of images based on NGC version](#remove-a-series-of-images-based-on-ngc-version)
 - [Who to talk to](#who-to-talk-to)
   - [Point of contact:](#point-of-contact)
@@ -110,6 +111,12 @@ yaoyuh/ngc_x86_dsta   20.11_01_base                   8054a4e1402e   16 hours ag
 ```
 
 Note that, currently, different set of images with different suffixs will be generated on Jetson and x86 platforms. This situation may be changed to have a more consistent set of images later.
+
+## Notes for supporting PyG and CuPy on x86 ##
+
+The user is encouraged to take a look at `dockerfiles/version_helper.py` to get the supported versions of [PyG](https://github.com/pyg-team/pytorch_geometric) and [CuPy](https://docs.cupy.dev/en/stable/install.html). Since the versions of CUDA and PyTorch are determined by the [NGC image](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/overview.html#overview), we need to find the best match for PyG and CuPy by referring to the CUDA and PyTorch.
+
+On ARM (Jetson), no images are provided for supporting PyG and CuPy at the moment. They might be supported later. Currently on Jetpack 4.6, all our inference codes are running without docker.
 
 # Remove a series of images based on NGC version #
 
