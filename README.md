@@ -131,7 +131,7 @@ cd <scripts/>
 ./remove_images.sh <Docker Hub account> <NGC version>
 ```
 
-The following is an example on a Jetson device.
+The following is an example on a x86.
 
 ```
 $ cd <scripts/> 
