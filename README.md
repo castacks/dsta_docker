@@ -96,8 +96,10 @@ cd <scripts/>
 Several images will be built progressively. In case of a failure, the user can comment out some parts of the script, make necessary changes to the docker file and re-run again. Then previous successfully built images serve as warm start (base images) of the modified docker file. When the whole build procedure finishes, there will be an image with a `99_local` tag suffix. This is the final image that has the host user already added. The images built by the above example command on a Jetson device are
 
 ```
-REPOSITORY                          TAG                   IMAGE ID       CREATED        SIZE
-yaoyuh/ngc_x86_dsta       20.11_99_local                    8d07077ba47d   15 hours ago    13.6GB
+REPOSITORY            TAG                   IMAGE ID       CREATED      SIZE
+yaoyuh/ngc_arm_dsta   22.12_pre_99_local    ef1c20223b47   2 days ago   14.4GB
+yaoyuh/ngc_arm_dsta   22.12_pre_02_python   650ffbd9c296   2 days ago   14.4GB
+yaoyuh/ngc_arm_dsta   22.12_pre_01_base     555cde636521   2 days ago   14.3GB
 ```
 
 Running `./build_images.sh yaoyuh 20.11` on x86 will be
