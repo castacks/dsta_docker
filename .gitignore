@@ -1,3 +1,5 @@
 *.pyc
 *.zip
 scripts/*_local.*
+.vscode/
+*.code-workspace
