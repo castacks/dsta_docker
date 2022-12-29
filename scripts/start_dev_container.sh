@@ -44,7 +44,7 @@ docker run \
     -it \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     --volume="$XAUTH:$XAUTH" \
-    --volume="/external/home/${USER}/ros/:/ros/" \
+    --volume="/external/home/${USER}/ros/:/ros_ws/" \
     --volume="/external/home/${USER}/data/:/data/" \
     --env="DISPLAY=$DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
