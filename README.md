@@ -19,10 +19,11 @@ This repo contains useful docker files and scripts for the DSTA project. You can
 
 # Major packages #
 
-| NGC   | ubuntu | CUDA | Python | PyTorch  | Torch-TensorRT | comment                       |
-|-------|--------|------|--------|----------|----------------|-------------------------------|
-| 22.12 | 20.04  | 11.8 | 3.8.10 | 1.14.0a0 | 1.3.0a0        | For pre-proc                  |
-| 20.11 | 18.04  | 11.1 | 3.6    | 1.8.0a0  |                | For compatibility test on x86 |
+| NGC   | ubuntu | CUDA | Python | PyTorch  | Torch-TRT | comment                       |
+|-------|--------|------|--------|----------|-----------|-------------------------------|
+| 22.12 | 20.04  | 11.8 | 3.8.10 | 1.14.0a0 | 1.3.0a0   | For pre-proc                  |
+| 22.08 | 20.04  | 11.7 | 3.8    | 1.13.0a0 | 1.1.0a0   | All purpose on x86.           |
+| 20.11 | 18.04  | 11.1 | 3.6.10 | 1.8.0a0  | None      | For compatibility test on x86 |
 
 # Pre-built images #
 
