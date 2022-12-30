@@ -10,7 +10,7 @@ NGC_VERSION=$2
 # Detect the system architecture.
 ARCH=$(get_docker_arch)
 
-shift 3
+shift 2
 while getopts ":c" flag
 do
     case "${flag}" in
