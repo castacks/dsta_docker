@@ -12,6 +12,7 @@ ECHO_PREFIX=">>>"
 IMAGE_NAME_01_BASE=01_base
 IMAGE_NAME_02_PYTHON=02_python
 IMAGE_NAME_03_CUDA_TORCH_DEP=03_cuda_torch_dependent
+IMAGE_NAME_04_ROS=04_ros
 IMAGE_NAME_99_LOCAL=99_local
 
 echo "============================================================"
@@ -58,11 +59,23 @@ echo ""
     ${IMAGE_NAME_03_CUDA_TORCH_DEP}
 
 echo ""
+echo "${ECHO_PREFIX} Building ${IMAGE_NAME_04_ROS}..."
+echo ""
+
+./build_docker_image.sh \
+    x86/04_ros.dockerfile \
+    ${DOCKERHUB_ACCOUNT} \
+    ${PLATFORM} \
+    ${NGC_VERSION} \
+    ${IMAGE_NAME_03_CUDA_TORCH_DEP} \
+    ${IMAGE_NAME_04_ROS}
+
+echo ""
 echo "${ECHO_PREFIX} Building ${IMAGE_NAME_PRE_99_LOCAL}..."
 echo ""
 
 ./add_user_2_image.sh \
-    ${DOCKERHUB_ACCOUNT}/ngc_${PLATFORM}_dsta:${NGC_VERSION}_${IMAGE_NAME_03_CUDA_TORCH_DEP} \
+    ${DOCKERHUB_ACCOUNT}/ngc_${PLATFORM}_dsta:${NGC_VERSION}_${IMAGE_NAME_04_ROS} \
     ${DOCKERHUB_ACCOUNT}/ngc_${PLATFORM}_dsta:${NGC_VERSION}_${IMAGE_NAME_99_LOCAL}
 
 # List all the images that have been built.

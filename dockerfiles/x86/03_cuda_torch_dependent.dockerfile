@@ -1,4 +1,4 @@
-ARG base_image=yaoyuh/ngc_x86_dsta:22.12_02_python
+ARG base_image=yaoyuh/ngc_x86_dsta:22.08_02_python
 FROM ${base_image}
 
 # Copy version_helper.py

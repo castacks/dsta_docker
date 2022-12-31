@@ -44,8 +44,9 @@ RUN touch /home/${user_name}/.tmux.conf \
  && echo 'set -g mouse on' >> /home/${user_name}/.tmux.conf
 
 # Configure ROS as needed.
-# RUN echo 'source /opt/ros/noetic/setup.bash' >> /home/${user_name}/.bashrc \
-#  && echo 'source /ws/devel/setup.bash' >> /home/${user_name}/.bashrc \
+RUN echo 'alias beginROSBase="source /opt/ros/noetic/setup.bash"' >> /home/${user_name}/.bashrc \
+ && echo 'alias beginROS="source /ros_ws/devel/setup.bash"' >> /home/${user_name}/.bashrc \
+ && echo 'alias cb="catkin build -DPYTHON_EXECUTABLE=/usr/bin/python3"' >> /home/${user_name}/.bashrc
 
 # running container start dir
 WORKDIR /home/${user_name}

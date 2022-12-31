@@ -1,4 +1,4 @@
-ARG base_image=nvcr.io/nvidia/pytorch:22.12-py3
+ARG base_image=nvcr.io/nvidia/pytorch:22.08-py3
 FROM ${base_image}
 
 # Allow using GUI apps.
