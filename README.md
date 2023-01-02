@@ -155,6 +155,14 @@ REPOSITORY           TAG                 IMAGE ID       CREATED        SIZE
 ...
 ```
 
+The above command untags the images. To finally/acutally remove them, use
+
+```bash
+# This will remove other stuff! Use with caution.
+# Please read the documentation of 'docker system prune' before proceeding.
+docker system prune
+```
+
 # Who to talk to #
 
 Please create GitHub issues if you find any problems.
