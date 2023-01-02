@@ -10,6 +10,7 @@
 - [Building images locally](#building-images-locally)
   - [Notes for supporting PyG and CuPy on x86](#notes-for-supporting-pyg-and-cupy-on-x86)
 - [Remove a series of images based on NGC version](#remove-a-series-of-images-based-on-ngc-version)
+- [FAQ](#faq)
 - [Who to talk to](#who-to-talk-to)
   - [Point of contact:](#point-of-contact)
 
@@ -161,6 +162,24 @@ The above command untags the images. To finally/acutally remove them, use
 # This will remove other stuff! Use with caution.
 # Please read the documentation of 'docker system prune' before proceeding.
 docker system prune
+```
+
+# FAQ #
+
+- Build from NGC images failed with the following error.
+
+```
+-----
+ > [1/3] FROM nvcr.io/nvidia/pytorch:22.08-py3@sha256:1aa83e1a13f756f31dabf82bc5a3c4f30ba423847cb230ce8c515f3add88b262:
+------
+failed to copy: httpReadSeeker: failed open: failed to authorize: rpc error: code = Unknown desc = failed to fetch anonymous token: unexpected status: 401 Unauthorized
+```
+
+It seems that the reason for this problem is some incompatibility issues related to [BuildKit](https://docs.docker.com/build/buildkit/) when a Docker Hub account has logged in on the host computer. To fix it, log out the docker hub account on the host computer and re-log in again. [Ref](https://forums.docker.com/t/failed-to-authorize-rpc-error-code-unknown-desc-failed-to-fetch-oauth-token-unexpected-status-401-unauthorized/118562/38).
+
+```bash
+docker logout
+docker login
 ```
 
 # Who to talk to #
