@@ -182,6 +182,8 @@ docker logout
 docker login
 ```
 
+If the problem persists, go to `build_docker_image.sh` and disable BuildKit by removing the command `DOCKER_BUILDKIT=1`.
+
 # Who to talk to #
 
 Please create GitHub issues if you find any problems.
