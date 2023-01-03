@@ -175,14 +175,22 @@ docker system prune
 failed to copy: httpReadSeeker: failed open: failed to authorize: rpc error: code = Unknown desc = failed to fetch anonymous token: unexpected status: 401 Unauthorized
 ```
 
-It seems that the reason for this problem is some incompatibility issues related to [BuildKit](https://docs.docker.com/build/buildkit/) when a Docker Hub account has logged in on the host computer. To fix it, log out the docker hub account on the host computer and re-log in again. [Ref](https://forums.docker.com/t/failed-to-authorize-rpc-error-code-unknown-desc-failed-to-fetch-oauth-token-unexpected-status-401-unauthorized/118562/38).
+It seems that the reason for this problem is some incompatibility issues related to [BuildKit](https://docs.docker.com/build/buildkit/) when a Docker Hub account has logged in on the host computer. To fix it, log out the docker hub account on the host computer. [Ref](https://forums.docker.com/t/failed-to-authorize-rpc-error-code-unknown-desc-failed-to-fetch-oauth-token-unexpected-status-401-unauthorized/118562/38).
 
 ```bash
 docker logout
-docker login
 ```
 
 If the problem persists, go to `build_docker_image.sh` and disable BuildKit by removing the command `DOCKER_BUILDKIT=1`.
+
+- x86, cannot import `rospy` because `rospkg` cannot be found.
+
+This is due to the fact that the NGC images use conda but ROS is installed with `/usr/bin/python3`. For working with ROS (in images that support ROS), the user need to add the correct search path to `sys.path` manually. Something like
+
+```python
+import sys
+sys.path.append('/usr/lib/python3/dist-packages/')
+```
 
 # Who to talk to #
 
