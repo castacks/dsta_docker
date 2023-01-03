@@ -22,61 +22,61 @@ echo ""
 
 # Build the images in order.
 
-echo "${ECHO_PREFIX} Building ${IMAGE_NAME_01_BASE}..."
+# echo "${ECHO_PREFIX} Building ${IMAGE_NAME_01_BASE}..."
+# echo ""
+
+# ./build_docker_image.sh \
+#     x86/01_base.dockerfile \
+#     ${DOCKERHUB_ACCOUNT} \
+#     ${PLATFORM} \
+#     ${NGC_VERSION} \
+#     py3 \
+#     ${IMAGE_NAME_01_BASE} \
+#     -b nvcr.io/nvidia/pytorch:${NGC_VERSION}-py3
+
+echo ""
+echo "${ECHO_PREFIX} Building ${IMAGE_NAME_02_PYTHON}..."
 echo ""
 
 ./build_docker_image.sh \
-    x86/01_base.dockerfile \
+    x86/02_python.dockerfile \
     ${DOCKERHUB_ACCOUNT} \
     ${PLATFORM} \
     ${NGC_VERSION} \
-    py3 \
     ${IMAGE_NAME_01_BASE} \
-    -b nvcr.io/nvidia/pytorch:${NGC_VERSION}-py3
+    ${IMAGE_NAME_02_PYTHON}
 
-# echo ""
-# echo "${ECHO_PREFIX} Building ${IMAGE_NAME_02_PYTHON}..."
-# echo ""
+echo ""
+echo "${ECHO_PREFIX} Building ${IMAGE_NAME_03_CUDA_TORCH_DEP}..."
+echo ""
 
-# ./build_docker_image.sh \
-#     x86/02_python.dockerfile \
-#     ${DOCKERHUB_ACCOUNT} \
-#     ${PLATFORM} \
-#     ${NGC_VERSION} \
-#     ${IMAGE_NAME_01_BASE} \
-#     ${IMAGE_NAME_02_PYTHON}
+./build_docker_image.sh \
+    x86/03_cuda_torch_dependent.dockerfile \
+    ${DOCKERHUB_ACCOUNT} \
+    ${PLATFORM} \
+    ${NGC_VERSION} \
+    ${IMAGE_NAME_02_PYTHON} \
+    ${IMAGE_NAME_03_CUDA_TORCH_DEP}
 
-# echo ""
-# echo "${ECHO_PREFIX} Building ${IMAGE_NAME_03_CUDA_TORCH_DEP}..."
-# echo ""
+echo ""
+echo "${ECHO_PREFIX} Building ${IMAGE_NAME_04_ROS}..."
+echo ""
 
-# ./build_docker_image.sh \
-#     x86/03_cuda_torch_dependent.dockerfile \
-#     ${DOCKERHUB_ACCOUNT} \
-#     ${PLATFORM} \
-#     ${NGC_VERSION} \
-#     ${IMAGE_NAME_02_PYTHON} \
-#     ${IMAGE_NAME_03_CUDA_TORCH_DEP}
+./build_docker_image.sh \
+    x86/04_ros.dockerfile \
+    ${DOCKERHUB_ACCOUNT} \
+    ${PLATFORM} \
+    ${NGC_VERSION} \
+    ${IMAGE_NAME_03_CUDA_TORCH_DEP} \
+    ${IMAGE_NAME_04_ROS}
 
-# echo ""
-# echo "${ECHO_PREFIX} Building ${IMAGE_NAME_04_ROS}..."
-# echo ""
+echo ""
+echo "${ECHO_PREFIX} Building ${IMAGE_NAME_PRE_99_LOCAL}..."
+echo ""
 
-# ./build_docker_image.sh \
-#     x86/04_ros.dockerfile \
-#     ${DOCKERHUB_ACCOUNT} \
-#     ${PLATFORM} \
-#     ${NGC_VERSION} \
-#     ${IMAGE_NAME_03_CUDA_TORCH_DEP} \
-#     ${IMAGE_NAME_04_ROS}
-
-# echo ""
-# echo "${ECHO_PREFIX} Building ${IMAGE_NAME_PRE_99_LOCAL}..."
-# echo ""
-
-# ./add_user_2_image.sh \
-#     ${DOCKERHUB_ACCOUNT}/ngc_${PLATFORM}_dsta:${NGC_VERSION}_${IMAGE_NAME_04_ROS} \
-#     ${DOCKERHUB_ACCOUNT}/ngc_${PLATFORM}_dsta:${NGC_VERSION}_${IMAGE_NAME_99_LOCAL}
+./add_user_2_image.sh \
+    ${DOCKERHUB_ACCOUNT}/ngc_${PLATFORM}_dsta:${NGC_VERSION}_${IMAGE_NAME_04_ROS} \
+    ${DOCKERHUB_ACCOUNT}/ngc_${PLATFORM}_dsta:${NGC_VERSION}_${IMAGE_NAME_99_LOCAL}
 
 # List all the images that have been built.
 echo ""
