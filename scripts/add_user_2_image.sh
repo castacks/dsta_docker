@@ -15,7 +15,7 @@ echo "user_name  = ${USER}"
 echo "group_id   = ${GROUP_ID}"
 echo "group_name = ${GROUP_NAME}"
 
-docker build \
+DOCKER_BUILDKIT=1 docker build \
     -f ${DOCKER_FILE} \
     -t ${TARGET} \
     --build-arg base_image=${BASE_IMAGE} \
