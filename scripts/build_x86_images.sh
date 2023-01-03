@@ -112,7 +112,7 @@ build_one_image \
     ""
 
 echo ""
-echo "${ECHO_PREFIX} Building ${IMAGE_NAME_PRE_99_LOCAL}..."
+echo "${ECHO_PREFIX} Building ${IMAGE_NAME_99_LOCAL}..."
 echo ""
 
 ./add_user_2_image.sh \
