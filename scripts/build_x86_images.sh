@@ -63,7 +63,12 @@ IMAGE_NAME_03_CUDA_TORCH_DEP=03_cuda_torch_dependent
 
 DOCKER_FILE_04=x86/04_ros.dockerfile
 IMAGE_NAME_04_ROS=04_ros
-IMAGE_NAME_LAST_ROOT=${IMAGE_NAME_04_ROS}
+
+# This seems OK on x86. But may have issues on Jetson devices.
+DOCKER_FILE_10=x86/10_opencv_override.dockerfile
+IMAGE_NAME_10_OPENCV_OVERRIDE=10_opencv_override
+
+IMAGE_NAME_LAST_ROOT=${IMAGE_NAME_10_OPENCV_OVERRIDE}
 
 # For adding a user.
 IMAGE_NAME_99_LOCAL=99_local
@@ -109,6 +114,15 @@ build_one_image \
     ${DOCKER_FILE_04} \
     ${IMAGE_NAME_03_CUDA_TORCH_DEP} \
     ${IMAGE_NAME_04_ROS} \
+    ""
+
+build_one_image \
+    ${DOCKERHUB_ACCOUNT} \
+    ${PLATFORM} \
+    ${NGC_VERSION} \
+    ${DOCKER_FILE_10} \
+    ${IMAGE_NAME_04_ROS} \
+    ${IMAGE_NAME_10_OPENCV_OVERRIDE} \
     ""
 
 echo ""
