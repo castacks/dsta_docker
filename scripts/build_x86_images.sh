@@ -74,7 +74,10 @@ IMAGE_NAME_11_LIGHTNING_FOR_MVS=11_lightning_for_mvs
 DOCKER_FILE_12=x86/12_additional_python.dockerfile
 IMAGE_NAME_12_ADDITIONAL_PYTHON=12_additional_python
 
-IMAGE_NAME_LAST_ROOT=${IMAGE_NAME_12_ADDITIONAL_PYTHON}
+DOCKER_FILE_20=x86/20_onnx.dockerfile
+IMAGE_NAME_20_ONNX=20_onnx
+
+IMAGE_NAME_LAST_ROOT=${IMAGE_NAME_20_ONNX}
 
 # For adding a user.
 IMAGE_NAME_99_LOCAL=99_local
@@ -147,6 +150,15 @@ build_one_image \
     ${DOCKER_FILE_12} \
     ${IMAGE_NAME_11_LIGHTNING_FOR_MVS} \
     ${IMAGE_NAME_12_ADDITIONAL_PYTHON} \
+    ""
+
+build_one_image \
+    ${DOCKERHUB_ACCOUNT} \
+    ${PLATFORM} \
+    ${NGC_VERSION} \
+    ${DOCKER_FILE_20} \
+    ${IMAGE_NAME_12_ADDITIONAL_PYTHON} \
+    ${IMAGE_NAME_20_ONNX} \
     ""
 
 echo ""
