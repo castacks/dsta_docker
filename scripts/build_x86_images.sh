@@ -68,7 +68,10 @@ IMAGE_NAME_04_ROS=04_ros
 DOCKER_FILE_10=x86/10_opencv_override.dockerfile
 IMAGE_NAME_10_OPENCV_OVERRIDE=10_opencv_override
 
-IMAGE_NAME_LAST_ROOT=${IMAGE_NAME_10_OPENCV_OVERRIDE}
+DOCKER_FILE_11=x86/11_lightning_for_mvs.dockerfile
+IMAGE_NAME_11_LIGHTNING_FOR_MVS=11_lightning_for_mvs
+
+IMAGE_NAME_LAST_ROOT=${IMAGE_NAME_11_LIGHTNING_FOR_MVS}
 
 # For adding a user.
 IMAGE_NAME_99_LOCAL=99_local
@@ -123,6 +126,15 @@ build_one_image \
     ${DOCKER_FILE_10} \
     ${IMAGE_NAME_04_ROS} \
     ${IMAGE_NAME_10_OPENCV_OVERRIDE} \
+    ""
+
+build_one_image \
+    ${DOCKERHUB_ACCOUNT} \
+    ${PLATFORM} \
+    ${NGC_VERSION} \
+    ${DOCKER_FILE_11} \
+    ${IMAGE_NAME_10_OPENCV_OVERRIDE} \
+    ${IMAGE_NAME_11_LIGHTNING_FOR_MVS} \
     ""
 
 echo ""
