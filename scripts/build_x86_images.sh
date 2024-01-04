@@ -68,7 +68,10 @@ IMAGE_NAME_04_ROS=04_ros
 DOCKER_FILE_10=x86/10_opencv_override.dockerfile
 IMAGE_NAME_10_OPENCV_OVERRIDE=10_opencv_override
 
-IMAGE_NAME_LAST_ROOT=${IMAGE_NAME_10_OPENCV_OVERRIDE}
+DOCKER_FILE_12=x86/12_additional_python.dockerfile
+IMAGE_NAME_12_ADDITIONAL_PYTHON=12_additional_python
+
+IMAGE_NAME_LAST_ROOT=${IMAGE_NAME_12_ADDITIONAL_PYTHON}
 
 # For adding a user.
 IMAGE_NAME_99_LOCAL=99_local
@@ -123,6 +126,15 @@ build_one_image \
     ${DOCKER_FILE_10} \
     ${IMAGE_NAME_04_ROS} \
     ${IMAGE_NAME_10_OPENCV_OVERRIDE} \
+    ""
+
+build_one_image \
+    ${DOCKERHUB_ACCOUNT} \
+    ${PLATFORM} \
+    ${NGC_VERSION} \
+    ${DOCKER_FILE_12} \
+    ${IMAGE_NAME_11} \
+    ${IMAGE_NAME_12_ADDITIONAL_PYTHON} \
     ""
 
 echo ""
