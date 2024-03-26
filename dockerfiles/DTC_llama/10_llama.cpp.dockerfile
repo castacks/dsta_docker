@@ -17,6 +17,7 @@ RUN mkdir /llama \
     -DLLAMA_CUBLAS=ON \
     -DLLAMA_BUILD_TESTS=OFF \
     -DLLAMA_BUILD_EXAMPLES=OFF \
+    -DBUILD_SHARED_LIBS=ON \
     ../llama.cpp \
  && cmake --build . --config Release -j6 \
  && cmake --install . \
