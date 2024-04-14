@@ -16,8 +16,15 @@ RUN apt-get update \
     wget \
     zip \
     unzip \
+    python3-pip \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
+
+ RUN pip3 install --no-cache-dir \
+    ipdb \
+    ipython \
+    tmuxp \
+    opencv-python
 
 RUN cd /tmp \ 
  && wget -q http://ceres-solver.org/ceres-solver-2.0.0.tar.gz \
