@@ -1,4 +1,4 @@
-ARG base_image=airlab/dtc_temp:01_base
+ARG base_image=theairlab/dtc_temp:01_base
 FROM ${base_image}
 
 RUN apt-get update \
