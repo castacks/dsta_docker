@@ -16,6 +16,8 @@ ARG user_name
 ARG group_id
 ARG group_name
 
+ARG config_user_script=config_user_empty.sh
+
 RUN echo "user_id=${user_id}" \
  && echo "user_name=${user_name}" \
  && echo "group_od=${group_id}" \
@@ -43,11 +45,9 @@ USER ${user_name}
 RUN touch /home/${user_name}/.tmux.conf \
  && echo 'set -g mouse on' >> /home/${user_name}/.tmux.conf
 
-# Configure ROS as needed.
-# For the additional catkin build argument: https://github.com/ysl208/iRoPro/issues/59
-RUN echo 'alias beginROSBase="source /opt/ros/noetic/setup.bash"' >> /home/${user_name}/.bashrc \
- && echo 'alias beginROS="source /ros_ws/devel/setup.bash"' >> /home/${user_name}/.bashrc \
- && echo 'alias cb="catkin build -DPYTHON_EXECUTABLE=/usr/bin/python3"' >> /home/${user_name}/.bashrc
+COPY ${config_user_script} /home/${user_name}/config_user.sh
+
+RUN bash /home/${user_name}/config_user.sh ${user_name}
 
 # running container start dir
 WORKDIR /home/${user_name}
