@@ -37,6 +37,8 @@ RUN useradd --uid ${user_id} --gid ${group_id} -ms /bin/bash ${user_name} \
  && echo "${user_name}:${user_name}" | chpasswd \
  && adduser ${user_name} sudo \
  && echo "${user_name} ALL=NOPASSWD: ALL" >> /etc/sudoers.d/${user_name}
+# Used on Jetson devices.
+# RUN usermod -aG video,audio,i2c ${user_name}
 
 # run as the developer user
 USER ${user_name}
