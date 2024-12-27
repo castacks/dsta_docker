@@ -20,7 +20,7 @@ ARG config_user_script=config_user_empty.sh
 
 RUN echo "user_id=${user_id}" \
  && echo "user_name=${user_name}" \
- && echo "group_od=${group_id}" \
+ && echo "group_id=${group_id}" \
  && echo "group_name=${group_name}"
 
 # Install sudo.
